@@ -2,9 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import {clerkMiddleware} from '@clerk/express'
 
-import userRoutes from './routes/user.route.js'
 import {ENV} from './config/env.js'
 import { connectDB } from './config/db.js';
+import userRoutes from './routes/user.route.js'
+import postRoutes from './routes/post.route.js'
 
 const app = express()
 
@@ -16,7 +17,8 @@ app.get('/',(req,res)=>{
     res.send('Response from the server')
 })
 
-app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 
 const startServer = async()=>{
 
